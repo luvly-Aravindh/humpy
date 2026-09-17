@@ -1635,65 +1635,29 @@
       gap: 10px
     }
 
-    /* proof ticker */
-    .ticker {
-      position: fixed;
-      left: 20px;
-      bottom: 20px;
-      z-index: 950;
-      background: var(--paper);
-      border: 2px solid var(--ink);
-      border-radius: 16px;
-      box-shadow: 0 10px 24px rgba(23, 61, 41, .22);
-      padding: 12px 16px 12px 14px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      max-width: 320px;
-      transform: translateX(-140%);
-      transition: transform .5s cubic-bezier(.2, .8, .2, 1)
-    }
-
-    .ticker.show {
-      transform: translateX(0)
-    }
-
-    .ticker .pin {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--pin);
-      flex: 0 0 auto;
-      position: relative
-    }
-
-    .ticker .pin::after {
-      content: "";
-      position: absolute;
-      inset: 9px;
-      border-radius: 50%;
-      background: #fff
-    }
-
-    .ticker .tx b {
-      display: block;
-      font-size: .9rem;
-      line-height: 1.2
-    }
-
-    .ticker .tx small {
-      color: var(--ink2);
-      font-size: .76rem
-    }
-
-    .ticker .vf {
-      display: block;
-      color: var(--green);
-      font-weight: 800;
-      font-size: .66rem;
-      text-transform: uppercase;
-      letter-spacing: .08em
-    }
+    /* ===== GetNos-style Proof Ticker (matches getnos.io) ===== */
+.gn-proof-ticker{position:fixed;bottom:18px;left:18px;z-index:9999;display:flex;align-items:center;gap:12px;width:auto;max-width:360px;min-width:280px;padding:10px 20px 10px 10px;background:#ffffff;border-radius:9999px;
+  box-shadow:0 6px 16px rgba(10,10,10,.10),0 2px 4px rgba(10,10,10,.04);font-family:'Inter','Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  transform:translateX(-120%);opacity:0;transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .4s ease;pointer-events:auto}
+.gn-proof-ticker.is-visible{transform:translateX(0);opacity:1}
+.gn-proof-ticker__thumb{flex-shrink:0;width:48px;height:48px;border-radius:50%;
+  background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.7) 0%,rgba(255,255,255,0) 55%),radial-gradient(circle at 72% 78%,rgba(20,28,60,.10) 0%,transparent 70%),linear-gradient(135deg,#ebeff8 0%,#d2d9ea 100%);
+  position:relative;overflow:hidden;box-shadow:inset 0 1px 1.5px rgba(255,255,255,.7),inset 0 -2px 3px rgba(20,28,60,.08),inset 0 0 0 .5px rgba(20,28,60,.06)}
+.gn-proof-ticker__thumb::before{content:'';position:absolute;inset:0;border-radius:50%;pointer-events:none;background-size:cover;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path d='M -3 14 Q 12 12 24 16 Q 36 20 51 14' stroke='%238792ad' stroke-width='1' fill='none' stroke-linecap='round' opacity='0.7'/><path d='M -3 32 Q 14 36 28 32 Q 42 28 51 34' stroke='%238792ad' stroke-width='1' fill='none' stroke-linecap='round' opacity='0.7'/><path d='M 16 -3 Q 20 12 18 24 Q 16 36 20 51' stroke='%238792ad' stroke-width='1' fill='none' stroke-linecap='round' opacity='0.7'/><path d='M 36 -3 Q 38 16 34 28 Q 32 40 36 51' stroke='%238792ad' stroke-width='0.8' fill='none' stroke-linecap='round' opacity='0.55'/><circle cx='8' cy='9' r='2.5' fill='%23a4afc7' opacity='0.5'/><circle cx='40' cy='42' r='3' fill='%23a4afc7' opacity='0.5'/><circle cx='42' cy='8' r='1.8' fill='%23a4afc7' opacity='0.45'/></svg>")}
+.gn-proof-ticker__pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:16px;height:20px;z-index:1;filter:drop-shadow(0 1.5px 2.5px rgba(59,90,254,.55))}
+.gn-proof-ticker__content{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.gn-proof-ticker__line1{font-size:14px;line-height:1.25;color:#0a0a0a;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gn-proof-ticker__line1-from{color:#8b90a4;font-weight:400}
+.gn-proof-ticker__line2{font-size:12px;line-height:1.25;color:#5a6080;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gn-proof-ticker__line3{display:flex;align-items:center;gap:5px;font-size:11px;line-height:1.25}
+.gn-proof-ticker__time{color:#0a0a0a;font-weight:600;margin-right:3px}
+.gn-proof-ticker__badge{width:13px;height:13px;flex-shrink:0;margin-right:1px}
+.gn-proof-ticker__verified{color:#3b5afe;font-weight:600}
+@media (max-width:760px){.gn-proof-ticker{bottom:84px}}
+@media (max-width:540px){.gn-proof-ticker{bottom:84px;left:12px;right:12px;width:auto;gap:10px;padding:8px 14px 8px 8px}
+  .gn-proof-ticker__thumb{width:40px;height:40px}.gn-proof-ticker__pin{width:13px;height:16px}
+  .gn-proof-ticker__line1{font-size:13px}.gn-proof-ticker__line2{font-size:11px}.gn-proof-ticker__line3{font-size:10px;gap:4px}.gn-proof-ticker__badge{width:11px;height:11px}}
 
     /* misc floaters */
     .floaters {
@@ -3382,11 +3346,27 @@
   </footer>
 
   <!-- PROOF TICKER -->
-  <div class="ticker" id="ticker">
-    <div class="pin"></div>
-    <div class="tx"><span class="vf">&#10003; Verified by Proof</span><b id="tk-name">Aditi from Baner</b><small
-        id="tk-act">started a subscription &bull; 4 min ago</small></div>
+<!-- PROOF TICKER (getnos.io style) -->
+<div class="gn-proof-ticker" id="gn-proof-ticker" role="status" aria-live="polite">
+  <div class="gn-proof-ticker__thumb">
+    <svg class="gn-proof-ticker__pin" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M11 0C4.925 0 0 4.925 0 11c0 7.5 11 17 11 17s11-9.5 11-17c0-6.075-4.925-11-11-11z" fill="#3b5afe"/>
+      <circle cx="11" cy="11" r="4" fill="#ffffff"/>
+    </svg>
   </div>
+  <div class="gn-proof-ticker__content">
+    <div class="gn-proof-ticker__line1"><span id="gn-ticker-name">Aditi K.</span><span class="gn-proof-ticker__line1-from"> from </span><span id="gn-ticker-city">Baner, Pune</span></div>
+    <div class="gn-proof-ticker__line2" id="gn-ticker-action">started a subscription</div>
+    <div class="gn-proof-ticker__line3">
+      <span class="gn-proof-ticker__time" id="gn-ticker-time">2 min ago</span>
+      <svg class="gn-proof-ticker__badge" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.49 4.49 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.49 4.49 0 0 1 3.497-1.307Z" fill="#3b5afe"/>
+        <path d="M8 12.5l2.7 2.7L16.5 9" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span class="gn-proof-ticker__verified">Verified by Proof</span>
+    </div>
+  </div>
+</div>
 
   <script>
     /* reveal on scroll */
@@ -3451,18 +3431,26 @@
     }
     showTab('milk', document.querySelector('.tabs button'));
 
-    /* proof ticker rotation */
-    const TK = [['Aditi from Baner', 'started a subscription'], ['Rohan from Kothrud', 'recharged their wallet'],
-    ['Sneha from Koregaon Park', 'ordered Bilona ghee'], ['Kunal from Aundh', 'started a subscription'],
-    ['Meghana from Viman Nagar', 'added paneer to the box'], ['Omkar from Wakad', 'started a subscription'],
-    ['Prasad from Shivajinagar', 'ordered a glass bottle'], ['Sayali from Baner', 'recharged their wallet']];
-    let ti = 0; const tk = document.getElementById('ticker');
-    function cycleTk() {
-      const [n, a] = TK[ti % TK.length]; const mins = [3, 4, 6, 7, 9, 11][ti % 6];
-      document.getElementById('tk-name').textContent = n; document.getElementById('tk-act').innerHTML = a + ' &bull; ' + mins + ' min ago';
-      tk.classList.add('show'); setTimeout(() => tk.classList.remove('show'), 4200); ti++;
-    }
-    setTimeout(cycleTk, 1400); setInterval(cycleTk, 6200);
+   /* proof ticker rotation (getnos.io style, weekly-seeded) */
+(function(){
+  var el=document.getElementById('gn-proof-ticker'),nameEl=document.getElementById('gn-ticker-name'),cityEl=document.getElementById('gn-ticker-city'),actEl=document.getElementById('gn-ticker-action'),timeEl=document.getElementById('gn-ticker-time');
+  if(!el||!nameEl) return;
+  var FIRST=["Aditi","Rohan","Sneha","Kunal","Meghana","Omkar","Prasad","Sayali","Aarav","Isha","Neha","Karan","Rutuja","Siddharth","Tanvi","Ganesh","Pooja","Amol","Shreya","Nikhil"];
+  var LAST=["K.","M.","S.","D.","P.","J.","R.","B.","N.","G.","V.","T."];
+  var CITIES=["Baner, Pune","Kothrud, Pune","Koregaon Park, Pune","Aundh, Pune","Viman Nagar, Pune","Wakad, Pune","Shivajinagar, Pune","Kalyani Nagar, Pune","Hinjewadi, Pune","Bavdhan, Pune","Hadapsar, Pune","Pashan, Pune"];
+  var ACTIONS=["started a subscription","recharged their wallet","ordered Bilona ghee","added paneer to the box","ordered a glass bottle","started a daily milk plan","switched to A2 milk"];
+  var TIMES=["2 min ago","3 min ago","4 min ago","6 min ago","8 min ago","11 min ago","14 min ago","19 min ago","25 min ago","34 min ago"];
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  function isoWeekSeed(){var d=new Date();var ys=new Date(d.getFullYear(),0,1);var doy=Math.floor((d-ys)/86400000);return d.getFullYear()*100+Math.floor(doy/7);}
+  var rand=mulberry32(isoWeekSeed());
+  function pick(a){return a[Math.floor(rand()*a.length)];}
+  function nx(){return {name:pick(FIRST)+" "+pick(LAST),city:pick(CITIES),action:pick(ACTIONS),time:pick(TIMES)};}
+  var VISIBLE_MS=6000,INTERVAL_MS=11000,START_DELAY=4000,dismissed=false,hideT;
+  function render(a){nameEl.textContent=a.name;cityEl.textContent=a.city;actEl.textContent=a.action;timeEl.textContent=a.time;}
+  function show(){if(dismissed)return;render(nx());el.classList.add('is-visible');clearTimeout(hideT);hideT=setTimeout(function(){if(!dismissed)el.classList.remove('is-visible');},VISIBLE_MS);}
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.style.transition='opacity 0.2s';}
+  setTimeout(function(){show();setInterval(show,INTERVAL_MS);},START_DELAY);
+})();
   </script>
 </body>
 
